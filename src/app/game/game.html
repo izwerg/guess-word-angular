@@ -1,0 +1,27 @@
+<div ng-controller="GameCtrl as game">
+
+	<div class="panel panel-default word">
+		<div class="panel-heading">Word</div>
+		<div class="panel-body">
+			<button type="button" class="btn btn-primary" ng-repeat="letter in game.word" ng-bind="letter.char"></button>
+		</div>
+	</div>
+
+	<div class="panel panel-default alphabet">
+		<div class="panel-heading">Alphabet</div>
+		<div class="panel-body">
+			<button type="button" class="btn btn-primary" ng-repeat="letter in game.alphabet" ng-bind="letter.char" ng-click="game.checkLetter(letter)" ng-disabled="letter.used"></button>
+		</div>
+	</div>
+
+	<div class="status">
+		<div>Mistakes: <span ng-bind="game.mistakesCount"></span> / <span ng-bind="game.mistakesMax"></span></div>
+		<h2 class="text-success" ng-show="game.conditionWin()">You Win!</h2>
+		<h2 class="text-danger" ng-show="game.conditionLose()">You Lose!</h2>
+	</div>
+
+	<button type="button" class="btn btn-primary" ng-click="game.giveUp()" ng-hide="game.conditionWin() || game.conditionLose()">Give Up</button>
+	<button type="button" class="btn btn-primary" ng-click="game.startNewGame()" ng-show="game.conditionWin() || game.conditionLose()">Start New Game</button>
+
+</div>
+
