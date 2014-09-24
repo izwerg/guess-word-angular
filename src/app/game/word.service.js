@@ -18,5 +18,5 @@ function word() {
 			'FORTUNE'
 	];
 
-	return words[Math.floor(Math.random() * words.length)].split('');
+	return words[Math.floor(Math.random() * (words.length - 1))].split('');
 }
